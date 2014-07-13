@@ -1,0 +1,8 @@
+setwd("/Users/redrock/ExData_Plotting1")
+powercons <- read.table("household_power_consumption.txt", header=TRUE, sep=";", na.strings = "?", nrows= 2075259, stringsAsFactors=FALSE)
+powercons$Date <- as.Date(powercons$Date, format = "%d/%m/%Y")
+newpowerdata <- subset(powercons, subset = (Date >= "2007-02-01" & Date < "2007-02-03"))
+rm(powercons)
+hist(newpowerdata$Global_active_power, col = "red", main = "Global Active Power", xlab = "Global Active Power (kilowatts)", ylab = "Frequency")
+dev.copy(png, file="plot1.png")
+dev.off()
